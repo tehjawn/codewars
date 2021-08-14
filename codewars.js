@@ -48,12 +48,26 @@
 // console.log(createPhoneNumber[1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
 
 // IS NUMBER PRIME?
-function isPrime(num) {
-    for (var i = 2; i < Math.floor(Math.sqrt(num)) + 1; i++) {
-        if (num % i == 0) return false
-    }
-    return num > 1;
+// function isPrime(num) {
+//     for (var i = 2; i < Math.floor(Math.sqrt(num)) + 1; i++) {
+//         if (num % i == 0) return false
+//     }
+//     return num > 1;
+// }
+
+// console.log(isPrime(23))
+// console.log(isPrime(4))
+
+// MAXIMUM SUBARRAY SUM
+var maxSequence = function (arr) {
+    var currentMax = 0
+    var highestMax = 0
+    arr.forEach(i => {
+        currentMax += i
+        if (currentMax > highestMax) highestMax = currentMax
+        if (currentMax < 0) currentMax = 0
+    })
+    return highestMax
 }
 
-console.log(isPrime(23))
-console.log(isPrime(4))
+console.log(maxSequence([1, 2, 3]))
