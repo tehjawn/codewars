@@ -181,3 +181,14 @@
 // console.log(zeros(5))
 // console.log(zeros(10))
 // console.log(zeros(30))
+
+// BREAK CAMEL CASE
+// function solution(string) {
+//     return string.split('').map(c => {
+//         if (c.charCodeAt(0) < 'a'.charCodeAt(0)) {
+//             return ' ' + c
+//         } else {
+//             return c
+//         }
+//     }).join('')
+// }
