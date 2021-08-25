@@ -1,3 +1,4 @@
+
 /**
  * AreSame.java
  * ------------
@@ -11,29 +12,38 @@ import java.util.Arrays;
 
 public class AreSame extends Solution {
 
-    /**
-     * Checks if {b} is the set of the items in {a} squared.
-     * @param a
-     * @param b
-     * @return
-     */
-    public static boolean comp(int a[], int b[]) {
-        // If a or b are null or not the same length -> false
-        if (a == null || b == null || a.length != b.length) return false;
-        
-        // Otherwise map each item in a to a^2 and sort
-        int[] aArray = Arrays.stream(a).map(i -> i * i).sorted().toArray();
-        // then sort b
-        int[] bArray = Arrays.stream(b).sorted().toArray();
+  /**
+   * Checks if {b} is the set of the items in {a} squared.
+   * 
+   * @param a
+   * @param b
+   * @return
+   */
+  public static boolean comp(int a[], int b[]) {
+    // If a or b are null or not the same length -> false
+    if (a == null || b == null || a.length != b.length)
+      return false;
 
-        // compare a to b - they should be the same. idk why array.equals doesn't work tho tbh
-        return Arrays.toString(aArray).equals(Arrays.toString(bArray));
-    }
+    // Otherwise map each item in a to a^2 and sort
+    int[] aArray = Arrays.stream(a).map(i -> i * i).sorted().toArray();
+    // then sort b
+    int[] bArray = Arrays.stream(b).sorted().toArray();
 
-    @Override
-    public void testSolution() {
-		int[] a = new int[]{121, 144, 19, 161, 19, 144, 19, 11};
-		int[] b = new int[]{121, 14641, 20736, 361, 25921, 361, 20736, 361};
-		assertEquals(true, AreSame.comp(a, b)); 
-    }
+    // compare a to b - they should be the same. idk why array.equals doesn't work
+    // tho tbh
+    return Arrays.toString(aArray).equals(Arrays.toString(bArray));
+  }
+
+  @Override
+  public void testSolution() {
+    int[] a = new int[] { 121, 144, 19, 161, 19, 144, 19, 11 };
+    int[] b = new int[] { 121, 14641, 20736, 361, 25921, 361, 20736, 361 };
+    System.out.println(String.format("Comparing multiplicities of {%s} to {%s}...", Arrays.toString(a), Arrays.toString(b)));
+    assertEquals(true, AreSame.comp(a, b));
+    
+    int[] c = new int[] { 122, 144, 19, 161, 19, 144, 19, 11 };
+    int[] d = new int[] { 121, 14641, 20736, 361, 25921, 361, 736, 361 };
+    System.out.println(String.format("Comparing multiplicities of {%s} to {%s}...", Arrays.toString(c), Arrays.toString(d)));
+    assertEquals(false, AreSame.comp(c, d));
+  }
 }

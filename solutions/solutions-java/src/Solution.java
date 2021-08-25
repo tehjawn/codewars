@@ -3,8 +3,12 @@ public class Solution {
         assertEquals(true, true);
     }
 
-    public Boolean assertEquals(Boolean a, Boolean b) {
-        System.out.println("Test passed: ✔️");
-        return a == b;
+    public Boolean assertEquals(Object a, Object b) {
+        if (a.equals(b)) {
+            System.out.println("✔️ - Test passed! Expected {" + a.toString() + "} is equal to {" + b.toString() + "}");
+        } else {
+            System.out.println("❌ - Test failed! Expected {" + a.toString() + "} is equal to {" + b.toString() + "}");
+        }
+        return a.equals(b);
     }
 }
