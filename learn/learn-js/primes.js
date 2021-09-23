@@ -6,37 +6,35 @@
  * 
  */
 
-let getPrimesMToN = (n, m) => {
-    if (n > m) return 'Error: n cannot be bigger than m'
+export const getPrimesMToN = (n, m) => {
+  if (n > m) return 'Error: n cannot be bigger than m'
 
-    if (m <= 1) return ''
+  if (m <= 1) return ''
 
-    let retString = []
-    for (let i = n; i <= m; i++) {
-        if (isPrime(i)) {
-            retString.push(i)
-        }
+  let retString = []
+  for (let i = n; i <= m; i++) {
+    if (isPrime(i)) {
+      retString.push(i)
     }
+  }
 
-    return retString.join(',')
+  return retString.join(',')
 }
 
-let getPrimesToN = (m) => {
-    return getPrimesMToN(2, m)
+export const getPrimesToN = (m) => {
+  return getPrimesMToN(2, m)
 }
 
 let isPrime = (n) => {
-    for (let i = 2; i <= Math.sqrt(n); i++) {
-        if (n % i == 0) {
-            return false
-        }
+  for (let i = 2; i <= Math.sqrt(n); i++) {
+    if (n % i == 0) {
+      return false
     }
-    return true
+  }
+  return true
 }
 
 console.log(getPrimesMToN(5, 11))
-
-module.exports = {getPrimesToN, getPrimesMToN};
 
 /**
  * 

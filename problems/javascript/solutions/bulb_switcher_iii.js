@@ -28,3 +28,5 @@
       // - If so, increment "allBlueMomentsCount"
   })
 };
+
+module.exports = numTimesAllBlue;

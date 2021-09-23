@@ -5,13 +5,17 @@
  * @param {number} n 
  * @returns {number}
  */
-function digital_root(n) {
-    var digitSum = 0
-    n.toString().split('').forEach(c => {
-        digitSum += c - '0'
-    })
-    if (digitSum > 9) return digital_root(digitSum)
-    return digitSum
+const digital_root = (n) => {
+  var digitSum = 0
+  n.toString().split('').forEach(c => {
+    digitSum += c - '0'
+  })
+  if (digitSum > 9) return digital_root(digitSum)
+  return digitSum
 }
 
 console.log(digital_root(789412))
+
+export default {
+  digital_root
+}
