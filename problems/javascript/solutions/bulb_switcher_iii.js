@@ -1,32 +1,36 @@
 /**
- * @param {number[]} light
+ * @param {number[]} lights
  * @return {number}
  */
- const numTimesAllBlue = (light) => {
-    
-  // Catch edge case for no lights on
-  if (light.length < 1) {
-      return 0;
-  }
-  
-  // Catch edge case for only one light on
-  if (light.length == 1) {
-      return 1;
-  }
-  
-  let allBlueMomentsCount = 0;    // Counter for moments where all lights are blue
-  let lightFilledToIndex = 0;     // Lights fully filled up from 0 to this index
-  let lightbulbs = [];            // Array of lights - potentially don't need
-  
-  // For each light to be turned on in "lights"...
-  light.forEach((val, idx) => {
-      // Change color to "yellow" if there are bulbs to the left that are not on.
-      // Change color to "blue" if all the bulbs to the left have been filled.
-      // - Also, if there is a yellow bulb to the immediate right, change that to blue as well.
-      
-      // Check to see if all bulbs are blue.
-      // - If so, increment "allBlueMomentsCount"
-  })
-};
 
-module.exports = numTimesAllBlue;
+const numTimesAllBlue = (lights) => {
+  let allBlueMoments = 0;
+  let highestLightIndexChecked = 0;
+  let lightsOn = 0;
+
+  // A-ha Moment: Blue moments only happen when the number of lights turned on matches the highest light index checked so far.
+
+  // For each light we turn on...
+  lights.forEach(light => {
+
+    // Increment the lightsOn counter by 1
+    lightsOn += 1;
+    
+    // If the current light index is higher than the last checked highest light index...
+    if (light > highestLightIndexChecked) {
+      // Set the last checked highest light index to the current light index.
+      highestLightIndexChecked = light;
+    }
+
+    // If the number of lights on is the same as the last checked highest light index... 
+    if (lightsOn == highestLightIndexChecked) {
+      // A blue moment occurs. Increment allBlueMoments by 1.
+      allBlueMoments += 1;
+    }
+  })
+
+  // Return the counter representing all of the blue moments that occurred.
+  return allBlueMoments;
+}
+
+export default numTimesAllBlue;
