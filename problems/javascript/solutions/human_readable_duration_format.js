@@ -41,22 +41,22 @@ const formatDuration = (seconds) => {
 
   let mYears = Math.floor(seconds / SECONDS_PER_YEAR);
   seconds -= mYears * SECONDS_PER_YEAR;
-  if (mYears > 0) timeFormatArray.push(mYears > 1 ? 'years' : 'year')
+  if (mYears > 0) timeFormatArray.push(mYears > 1 ? `${mYears} years` : `${mYears} year`)
 
   let mDays = Math.floor(seconds / SECONDS_PER_DAY);
   seconds -= mDays * SECONDS_PER_DAY;
-  if (mDays > 0) timeFormatArray.push(mDays > 1 ? 'days' : 'day')
+  if (mDays > 0) timeFormatArray.push(mDays > 1 ? `${mDays} days` : `${mDays} day`)
 
   let mHours = Math.floor(seconds / SECONDS_PER_HOUR);
   seconds -= mDays * SECONDS_PER_HOUR;
-  if (mHours > 0) timeFormatArray.push(mHours > 1 ? 'hours' : 'hour')
+  if (mHours > 0) timeFormatArray.push(mHours > 1 ? `${mHours} hours` : `${mHours} hour`)
 
   let mMinutes = Math.floor(seconds / SECONDS_PER_MIN);
   seconds -= mMinutes * SECONDS_PER_MIN;
-  if (mMinutes > 0) timeFormatArray.push(mMinutes > 1 ? 'minutes' : 'minute')
+  if (mMinutes > 0) timeFormatArray.push(mMinutes > 1 ? `${mMinutes} minutes` : `${mMinutes} minute`)
   
   let mSeconds = seconds;
-  if (mSeconds > 0) timeFormatArray.push(mSeconds > 1 ? 'seconds' : 'second')
+  if (mSeconds > 0) timeFormatArray.push(mSeconds > 1 ? `${mSeconds} seconds` : `${mSeconds} second`)
 
   console.log(timeFormatArrayToString(timeFormatArray))
 }
@@ -67,9 +67,10 @@ const timeFormatArrayToString = (timeFormatArray) => {
   } else if (timeFormatArray.length === 2) {
     return timeFormatArray.join(' and ')
   } else if (timeFormatArray.length === 3) {
-    return
+    return timeFormatArray[0] + ', ' + timeFormatArray[1] + ' and ' + timeFormatArray[2]
+  } else {
+    return timeFormatArray[0] + ', ' + timeFormatArray[1] +  ', ' + timeFormatArray[2] + ' and ' + timeFormatArray[3]
   }
-  timeFormatArray.join(', ')
 }
 
-formatDuration(61)
+formatDuration(1100010061)
